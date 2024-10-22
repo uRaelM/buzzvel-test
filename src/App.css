@@ -1,5 +1,12 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   margin-inline: auto;
-  max-width: 1900px;
+  max-width: 1920px;
+  height: 100%;
   font-family: "Roboto", sans-serif;
+  overflow-x: hidden;
 }

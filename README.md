@@ -2,11 +2,16 @@
 
 Test for front end developer to Buzzvel
 
-# Sollar - Aplicação React
+# Soller - Aplicação React
 
 ## Descrição
 
-Sollar é uma aplicação desenvolvida em React que apresenta uma interface de usuário responsiva, incluindo uma barra de navegação customizada. A aplicação é construída utilizando `react-helmet` para gerenciamento de meta tags e `styled-components` para estilização de componentes.
+Soller é uma aplicação desenvolvida em React que apresenta uma interface de usuário responsiva, incluindo uma barra de navegação customizada. A aplicação é construída utilizando `react-helmet` para gerenciamento de meta tags e `styled-components` para estilização de componentes.
+
+## Home.jsx
+
+A Home.jsx foi desenvolvida de forma que qualquer texto, cor ou imagem do site pode ser modificada através de propriedades, trazendo facilidade para ajuste na paleta de cores, imagens e até mesmo
+estrututas
 
 ## Tecnologias Utilizadas
 
@@ -29,8 +34,8 @@ Certifique-se de que você tem as seguintes ferramentas instaladas:
 1. Clone o repositório:
 
    ```bash
-   git clone https://github.com/SEU_USUARIO/sollar.git
-   cd sollar
+   git clone https://github.com/SEU_USUARIO/Soller.git
+   cd Soller
 
    ```
 

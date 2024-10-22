@@ -1,6 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import styled from "styled-components";
+import CallBtn from "./buttons/CallBtn";
 
 const NavbarWrapper = styled.nav`
   display: flex;
@@ -16,10 +17,11 @@ const LeftNavbar = styled.div`
   justify-content: center;
   align-items: center;
   gap: 2rem;
+  z-index: 2;
 `;
 
 const Logo = styled.img`
-  width: ${(props) => props.logoWidth || "100px"};
+  width: ${(props) => props.logoWidth || "100%"};
   height: ${(props) => props.logoHeight || "50px"};
   margin-right: 2rem;
 `;
@@ -39,21 +41,6 @@ const RightNavbar = styled(LeftNavbar)`
   }
 `;
 
-const CallBtn = styled.div`
-  color: ${(props) => props.callBtnColor || "#581C87"};
-  border: 2px solid ${(props) => props.callBtnColor || "#581C87"};
-  border-radius: 30px;
-  padding: 1rem 2rem;
-  font-weight: bold;
-  cursor: pointer;
-
-  &:hover {
-    background: ${(props) => props.callBtnColor || "#581C87"};
-    color: ${(props) => props.callBtnHoverColor || "#FCD34D"};
-    transition: all 0.15s ease-in;
-  }
-`;
-
 function Navbar({
   links,
   logo,
@@ -64,14 +51,15 @@ function Navbar({
   numberTextColor,
   callBtnColor,
   callBtnHoverColor,
+  CallBtnText,
 }) {
   return (
     <div>
       <Helmet>
-        <title>Navbar - Soller</title>
+        <title>Soller - Navbar</title>
         <meta
           name="description"
-          content="Learn more about Cozinha de Titânio and our commitment to quality."
+          content="Learn more about Soller and our commitment to quality."
         />
       </Helmet>
       <NavbarWrapper textColor={textColor} backgroundColor={backgroundColor}>
@@ -88,9 +76,8 @@ function Navbar({
           <CallBtn
             callBtnColor={callBtnColor}
             callBtnHoverColor={callBtnHoverColor}
-          >
-            Request a Quote
-          </CallBtn>
+            CallBtnText={CallBtnText}
+          />
         </RightNavbar>
       </NavbarWrapper>
     </div>
