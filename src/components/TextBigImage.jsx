@@ -4,35 +4,39 @@ import styled from "styled-components";
 import Balls from "./design/Balls";
 
 const Container = styled.section`
+  padding: 4rem;
   margin-top: 5rem;
-  width: 100%;
-  height: 1100px;
+  width: calc(100% - 8rem);
+  height: calc(1100px - 8rem);
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding: 1rem;
   background-color: ${(props) => props.backgroundColor || "transparent"};
   color: ${(props) => props.textColor || "#0f172a"};
 
   div {
     text-align: ${(props) => (props.textleft ? "left" : "center")};
+    width: ${(props) => (props.textleft ? "55%" : "100%")};
+    margin-left: ${(props) => (props.textleft ? "16rem" : "")};
   }
 
   h1 {
-    font-size: 3rem;
+    font-size: 4rem;
+    font-weight: 800;
   }
 
   h3 {
+    font-weight: 400;
     color: ${(props) => props.subTitleColor || "#D97706"};
   }
 
   p {
     width: 50%;
+    margin: 2rem auto 4rem auto;
+    text-align: center;
     line-height: 2rem;
     font-weight: 400;
     font-size: 1.4rem;
-    margin: 2rem auto 4rem auto;
-    text-align: center;
   }
 
   img {
@@ -61,10 +65,7 @@ function TextBigImage({
     <>
       <Helmet>
         <title>Soller - Pick the sun</title>
-        <meta
-          name="description"
-          content="Et pulvinar nec interdum integer id urna molestie porta nullam."
-        />
+        <meta name="description" content="All the power that you need." />
       </Helmet>
       <Container
         backgroundColor={backgroundColor}
@@ -74,7 +75,7 @@ function TextBigImage({
         imageHeight={imageHeight}
         imageWidth={imageWidth}
       >
-        <div style={{ width: "50%", marginInline: "auto" }}>
+        <div>
           <h3>{subtitle}</h3>
           <h1>{title}</h1>
         </div>
@@ -83,8 +84,8 @@ function TextBigImage({
           ballImage={ballOne}
           height={"600"}
           width={"600"}
-          top={"55"}
-          right={"-1000"}
+          top={"50"}
+          right={"-105"}
         />
         <img src={image} />
         <Balls
@@ -92,7 +93,7 @@ function TextBigImage({
           height={"750"}
           width={"750"}
           bottom={"300"}
-          left={"-1000"}
+          left={"-75"}
         />
       </Container>
     </>

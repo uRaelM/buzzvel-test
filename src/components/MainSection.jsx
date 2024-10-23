@@ -1,16 +1,16 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import styled from "styled-components";
-import CallBtn from "./buttons/CallBtn";
+import CallBtn from "./ui/CallBtn";
 import Testemony from "./testimony/Testimony";
 import Balls from "./design/Balls";
 
 const Home = styled.main`
+  padding: 4rem;
   width: 100%;
-  height: 700px;
+  height: calc(700px - 8rem);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding: 1rem;
   color: ${(props) => props.textColor || "#0f172a"};
 `;
 

@@ -1,13 +1,13 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import styled from "styled-components";
-import CallBtn from "./buttons/CallBtn";
+import CallBtn from "./ui/CallBtn";
 
 const NavbarWrapper = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 1rem 4rem;
   background-color: ${(props) => props.backgroundColor || "transparent"};
   color: ${(props) => props.textColor || "#0f172a"};
 `;

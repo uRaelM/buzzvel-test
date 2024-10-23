@@ -1,11 +1,11 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import styled from "styled-components";
-import CallBtn from "./buttons/CallBtn";
+import CallBtn from "./ui/CallBtn";
 import TextBigImage from "./TextBigImage";
 import Balls from "./design/Balls";
 
-const AbsoluteContainer = styled.div`
+const AbsoluteContainer = styled.section`
   position: relative;
   bottom: -80px;
 `;
@@ -34,7 +34,7 @@ function TextBigImageButton({
   ballImage,
 }) {
   return (
-    <>
+    <div style={{ marginTop: "-12rem" }}>
       <Helmet>
         <title>Soller - Pick the sun</title>
         <meta
@@ -65,7 +65,7 @@ function TextBigImageButton({
         subTitleColor={subTitleColor}
         textleft={textleft}
       />
-    </>
+    </div>
   );
 }
 

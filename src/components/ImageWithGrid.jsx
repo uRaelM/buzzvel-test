@@ -3,20 +3,22 @@ import styled from "styled-components";
 import Balls from "./design/Balls";
 
 // Styled components
-const GridContainer = styled.div`
+const GridContainer = styled.section`
+  padding: 4rem;
+  width: calc(100% - 8rem);
+  height: calc(1100px - 8rem);
   display: grid;
   grid-template-columns: ${(props) => (props.invert ? "4fr 2fr" : "2fr 4fr")};
   gap: 20px;
-  padding: 1rem;
-  width: 100%;
-  height: 1100px;
   color: ${(props) => props.textColor || "#0f172a"};
 
   h1 {
-    font-size: 3rem;
+    font-size: 4rem;
+    font-weight: 800;
   }
 
   h3 {
+    font-weight: 400;
     color: ${(props) => props.subTitleColor || "#D97706"};
   }
 
@@ -73,7 +75,7 @@ function ImageWithGrid({
         <>
           <Balls
             top="10"
-            left="-20"
+            left="-75"
             ballImage={ballImage}
             width="1000"
             height="1000"
@@ -113,7 +115,7 @@ function ImageWithGrid({
 
           <Balls
             top="0"
-            right="-425"
+            right="-500"
             ballImage={ballImage}
             width="1000"
             height="1000"

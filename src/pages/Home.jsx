@@ -3,6 +3,7 @@ import MainSection from "../components/MainSection";
 import TextBigImage from "../components/TextBigImage";
 import ImageWithGrid from "../components/ImageWithGrid";
 import TextBigImageButton from "../components/TextBigImageButton";
+import SliderWithText from "../components/SliderWithText";
 
 function Home() {
   return (
@@ -19,7 +20,7 @@ function Home() {
       callBtnColor(Cor do botão de chamada) 
       callBtnHoverColor(Cor do botão de chamada no hover) 
       callBtnText(Cor do texto do botão de chamada) 
-      links(li's da navbar) 
+      links(lista de li's da navbar) 
       */}
       <Navbar logo={"assets/img/logo.png"} logoHeight={"25px"} links={links} />
       {/* 
@@ -107,22 +108,33 @@ function Home() {
         invert={true}
       />
 
+      <SliderWithText
+        title={"Make something awesome"}
+        subtitle={"Join other Sun harvesters"}
+        paragraph={
+          "Dui euismod iaculis libero, aliquet vitae et elementum porttitor. Eleifend mi tristique condimentum congue fusce nunc, donec magnis commodo."
+        }
+        callBtnColor={"#FCD34D"}
+        callBtnHoverColor={"#78350F"}
+        testimoniesList={testimonies}
+      />
+
       {/*
       Está reutilizando TextBigImage, Balls e CallBtn
 
       title,
-  textColor,
-  subtitle,
-  image,
-  imageHeight,
-  imageWidth,
-  backgroundColor,
-  textleft,
-  subTitleColor,
-  callBtnColor,
-  callBtnHoverColor,
-  bottomBtnText, (Texto abaixo do botão)
-  ballImage,
+      textColor,
+      subtitle,
+      image,
+      imageHeight,
+      imageWidth,
+      backgroundColor,
+      textleft,
+      subTitleColor,
+      callBtnColor,
+      callBtnHoverColor,
+      bottomBtnText, (Texto abaixo do botão)
+      ballImage,
       */}
       <TextBigImageButton
         title={"All the power that you need for your house is now available"}
@@ -195,6 +207,28 @@ const titleTextArray2 = [
     paragraph:
       "Elementum, libero, lacus, vel ullamcorper at velit id. Malesuada velit et, ullamcorper malesuada amet, felis. ",
   },
+];
+
+const testimonies = [
+  {
+    testimonyText: "Great service! Highly recommend.",
+    imgSrc: "/path/to/image1.jpg",
+    name: "John Doe",
+    company: "Company A",
+  },
+  {
+    testimonyText: "Amazing experience, will come back for sure.",
+    imgSrc: "/path/to/image2.jpg",
+    name: "Jane Smith",
+    company: "Company B",
+  },
+  {
+    testimonyText: "Very professional and top-notch quality.",
+    imgSrc: "/path/to/image3.jpg",
+    name: "Alex Johnson",
+    company: "Company C",
+  },
+  // Adicione mais testemunhos aqui...
 ];
 
 export default Home;

@@ -7,6 +7,9 @@ const CallButton = styled.div`
   padding: 1rem 2rem;
   font-weight: bold;
   cursor: pointer;
+  height: 18px;
+  width: 8rem;
+  text-align: center;
 
   &:hover {
     background: ${(props) => props.callBtnColor || "#581C87"};

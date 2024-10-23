@@ -21,7 +21,6 @@ const BallContainer = styled.div`
   background-image: url(${({ ballImage }) => ballImage});
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: fit;
 `;
 
 const BallImageContainer = styled.div`
