@@ -62,41 +62,35 @@ function TextBigImage({
   textleft = false,
 }) {
   return (
-    <>
-      <Helmet>
-        <title>Soller - Pick the sun</title>
-        <meta name="description" content="All the power that you need." />
-      </Helmet>
-      <Container
-        backgroundColor={backgroundColor}
-        textleft={textleft}
-        textColor={textColor}
-        subTitleColor={subTitleColor}
-        imageHeight={imageHeight}
-        imageWidth={imageWidth}
-      >
-        <div>
-          <h3>{subtitle}</h3>
-          <h1>{title}</h1>
-        </div>
-        <p>{paragraph}</p>
-        <Balls
-          ballImage={ballOne}
-          height={"600"}
-          width={"600"}
-          top={"50"}
-          right={"-105"}
-        />
-        <img src={image} />
-        <Balls
-          ballImage={ballTwo}
-          height={"750"}
-          width={"750"}
-          bottom={"300"}
-          left={"-75"}
-        />
-      </Container>
-    </>
+    <Container
+      backgroundColor={backgroundColor}
+      textleft={textleft}
+      textColor={textColor}
+      subTitleColor={subTitleColor}
+      imageHeight={imageHeight}
+      imageWidth={imageWidth}
+    >
+      <div>
+        <h3>{subtitle}</h3>
+        <h1>{title}</h1>
+      </div>
+      <p>{paragraph}</p>
+      <Balls
+        ballImage={ballOne}
+        height={"600"}
+        width={"600"}
+        top={"60"}
+        right={"-1275"}
+      />
+      <img src={image} />
+      <Balls
+        ballImage={ballTwo}
+        height={"750"}
+        width={"750"}
+        bottom={"300"}
+        left={"-75"}
+      />
+    </Container>
   );
 }
 

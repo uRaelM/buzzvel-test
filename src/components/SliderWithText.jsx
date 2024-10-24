@@ -6,11 +6,11 @@ import Slider from "./Slider";
 
 const Container = styled.section`
   padding: 4rem;
-  padding-block: 4rem;
-  width: 100%;
-  height: calc(1100px - 8rem);
+  width: calc(100%-8rem);
+  height: calc(1000px - 8rem);
   background-color: ${(props) => props.backgroundColor || "#581C87"};
   color: ${(props) => props.textColor || "#FFF"};
+  overflow: hidden;
 
   h1 {
     font-size: 3rem;
@@ -35,6 +35,7 @@ const TextGrid = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: 3fr 1fr;
+  margin-bottom: -4rem;
 `;
 
 const SliderWithText = ({
@@ -45,8 +46,8 @@ const SliderWithText = ({
   subTitleColor,
   testimoniesList,
   backgroundColor,
-  callBtnColor,
-  callBtnHoverColor,
+  btnColor,
+  btnHoverColor,
 }) => {
   return (
     <Container
@@ -61,14 +62,15 @@ const SliderWithText = ({
           <p style={{ width: "50%" }}>{paragraph}</p>
         </div>
         <div>
-          <CallBtn
-            callBtnColor={callBtnColor}
-            callBtnHoverColor={callBtnHoverColor}
-          />
+          <CallBtn callBtnColor={btnColor} callBtnHoverColor={btnHoverColor} />
         </div>
       </TextGrid>
-      <div style={{ marginBlock: "4rem" }}>
-        <Slider testimoniesList={testimoniesList} />
+      <div
+        style={{
+          marginBlock: "8rem",
+        }}
+      >
+        <Slider testimoniesList={testimoniesList} btnColor={btnColor} />
       </div>
     </Container>
   );

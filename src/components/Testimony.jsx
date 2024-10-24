@@ -11,15 +11,15 @@ const TestimonyItem = styled.div`
   }
 
   .testimony-data {
-    margin-top: 0.5rem;
+    margin-top: 1rem;
     display: flex;
     justify-content: flex-start;
     align-items: center;
 
     img {
       border-radius: 100%;
-      width: 75px;
-      height: 75px;
+      width: 60px;
+      height: 60px;
       margin-right: 0.5rem;
     }
 
@@ -37,6 +37,7 @@ const TestimonyItem = styled.div`
 
       span {
         color: #475569;
+        margin-right: auto;
       }
     }
   }

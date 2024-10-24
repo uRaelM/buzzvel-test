@@ -1,13 +1,19 @@
+import { Helmet } from "react-helmet";
 import Navbar from "../components/Navbar";
 import MainSection from "../components/MainSection";
 import TextBigImage from "../components/TextBigImage";
 import ImageWithGrid from "../components/ImageWithGrid";
 import TextBigImageButton from "../components/TextBigImageButton";
 import SliderWithText from "../components/SliderWithText";
+import Footer from "../components/Footer";
 
 function Home() {
   return (
     <>
+      <Helmet>
+        <title>Soller - Sun to Power Your Home</title>
+        <meta name="description" content="Get the Sun to Power Your Home." />
+      </Helmet>
       {/* 
       Está reutilizando CallBtn
       Propriedades de Navbar: 
@@ -77,7 +83,7 @@ function Home() {
         ballTwo={"assets/img/balls/orange.png"}
       />
       {/*
-      Está reutilizando Balls
+        Está reutilizando Balls
       
         title(Titulo a ser exebido),
         textColor(Cor do título e parágrafo),
@@ -108,14 +114,28 @@ function Home() {
         invert={true}
       />
 
+      {/*
+      Esta utilizando o componente Slider e reutilizando CallBtn
+
+      title (titulo presente no slider)
+      subtitle (subtitulo presente no slider)
+      paragraph (paragrafo presente no slider)
+      textColor (cor padrão do texto)
+      subTitleColor (cor de destaque)
+      testimoniesList (Lista com testimonyText, imgSrc, name e company, para cada testemunho)
+      backgroundColor (cor do background)
+      btnColor (cor dos botões)
+      btnHoverColor (cor do texto do botão em hover)
+      */}
+
       <SliderWithText
         title={"Make something awesome"}
         subtitle={"Join other Sun harvesters"}
         paragraph={
           "Dui euismod iaculis libero, aliquet vitae et elementum porttitor. Eleifend mi tristique condimentum congue fusce nunc, donec magnis commodo."
         }
-        callBtnColor={"#FCD34D"}
-        callBtnHoverColor={"#78350F"}
+        btnColor={"#FCD34D"}
+        btnHoverColor={"#78350F"}
         testimoniesList={testimonies}
       />
 
@@ -151,6 +171,8 @@ function Home() {
         bottomBtnText={"Egestas fringilla aliquam leo"}
         ballImage={"assets/img/balls/light-purple.png"}
       />
+
+      <Footer />
     </>
   );
 }
@@ -211,22 +233,60 @@ const titleTextArray2 = [
 
 const testimonies = [
   {
-    testimonyText: "Great service! Highly recommend.",
-    imgSrc: "/path/to/image1.jpg",
-    name: "John Doe",
-    company: "Company A",
+    testimonyText:
+      "Purus maecenas quis elit eu, aliquet. Tellus porttitor ut sollicitudin sit non fringilla. Quam nunc volutpat senectus neque eget amet pharetra, euismod. Tempus, nunc, molestie imperdiet curabitur commodo euismod.",
+    imgSrc: "assets/img/people/girl-in-dark.png",
+    name: "Jane Cooper",
+    company: "10KWh",
   },
   {
-    testimonyText: "Amazing experience, will come back for sure.",
-    imgSrc: "/path/to/image2.jpg",
-    name: "Jane Smith",
-    company: "Company B",
+    testimonyText:
+      "Vehicula sit sit pharetra bibendum ut risus accumsan. Purus, in metus, enim, ipsum morbi euismod pellentesque. Mattis pharetra accumsan eget est mi enim, id. Sit quam tortor eu tellus non, in euismod integer.",
+    imgSrc: "assets/img/people/business-man.png",
+    name: "Ralph Edwards",
+    company: "32Kwh",
   },
   {
-    testimonyText: "Very professional and top-notch quality.",
-    imgSrc: "/path/to/image3.jpg",
-    name: "Alex Johnson",
-    company: "Company C",
+    testimonyText:
+      "Viverra lacus suspendisse elit, adipiscing orci, non turpis etiam sapien. Viverra blandit sem neque pretium. Duis enim semper fermentum consequat aenean libero. Blandit porta leo condimentum dolor, nisi, aliquet ante laoreet.",
+    imgSrc: "assets/img/people/asian-girl.png",
+    name: "Courtney Henry",
+    company: "6KWh",
+  },
+  {
+    testimonyText:
+      "Hendrerit augue ut nec, senectus quis integer netus. Sagittis fusce rhoncus magnis habitant amet amet. Egestas amet habitasse amet risus tellus ornare. Hendrerit augue ut nec, senectus. Mauris egestas feugiat leo vitae praesent neque, et.",
+    imgSrc: "assets/img/people/korean-boy.png",
+    name: "Cameron Williamson",
+    company: "12KWh",
+  },
+  {
+    testimonyText:
+      "Purus maecenas quis elit eu, aliquet. Tellus porttitor ut sollicitudin sit non fringilla. Quam nunc volutpat senectus neque eget amet pharetra, euismod. Tempus, nunc, molestie imperdiet curabitur commodo euismod.",
+    imgSrc: "assets/img/people/girl-in-dark.png",
+    name: "Jane Cooper",
+    company: "10KWh",
+  },
+  {
+    testimonyText:
+      "Vehicula sit sit pharetra bibendum ut risus accumsan. Purus, in metus, enim, ipsum morbi euismod pellentesque. Mattis pharetra accumsan eget est mi enim, id. Sit quam tortor eu tellus non, in euismod integer.",
+    imgSrc: "assets/img/people/business-man.png",
+    name: "Ralph Edwards",
+    company: "32Kwh",
+  },
+  {
+    testimonyText:
+      "Viverra lacus suspendisse elit, adipiscing orci, non turpis etiam sapien. Viverra blandit sem neque pretium. Duis enim semper fermentum consequat aenean libero. Blandit porta leo condimentum dolor, nisi, aliquet ante laoreet.",
+    imgSrc: "assets/img/people/asian-girl.png",
+    name: "Courtney Henry",
+    company: "6KWh",
+  },
+  {
+    testimonyText:
+      "Hendrerit augue ut nec, senectus quis integer netus. Sagittis fusce rhoncus magnis habitant amet amet. Egestas amet habitasse amet risus tellus ornare. Hendrerit augue ut nec, senectus. Mauris egestas feugiat leo vitae praesent neque, et.",
+    imgSrc: "assets/img/people/korean-boy.png",
+    name: "Cameron Williamson",
+    company: "12KWh",
   },
   // Adicione mais testemunhos aqui...
 ];

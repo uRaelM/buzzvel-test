@@ -35,13 +35,6 @@ function TextBigImageButton({
 }) {
   return (
     <div style={{ marginTop: "-12rem" }}>
-      <Helmet>
-        <title>Soller - Pick the sun</title>
-        <meta
-          name="description"
-          content="Et pulvinar nec interdum integer id urna molestie porta nullam."
-        />
-      </Helmet>
       <AbsoluteContainer>
         <ButtonDiv>
           <CallBtn

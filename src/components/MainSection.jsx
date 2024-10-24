@@ -2,7 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import styled from "styled-components";
 import CallBtn from "./ui/CallBtn";
-import Testemony from "./testimony/Testimony";
+import Testemony from "./Testimony";
 import Balls from "./design/Balls";
 
 const Home = styled.main`
@@ -52,10 +52,6 @@ function MainSection({
 }) {
   return (
     <div>
-      <Helmet>
-        <title>Soller - Sun to Power Your Home</title>
-        <meta name="description" content="Get the Sun to Power Your Home." />
-      </Helmet>
       <Home textColor={textColor}>
         <LeftSection>
           <h1>Get the Sun to Power Your Home</h1>
