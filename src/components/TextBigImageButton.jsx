@@ -12,10 +12,14 @@ const AbsoluteContainer = styled.section`
 
 const ButtonDiv = styled.div`
   z-index: 2;
-  width: 12rem;
   position: relative;
   top: 12rem;
-  left: 79%;
+  left: 77%;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 function TextBigImageButton({
@@ -41,9 +45,7 @@ function TextBigImageButton({
             callBtnColor={callBtnColor}
             callBtnHoverColor={callBtnHoverColor}
           />
-          <p style={{ color: "#FFF", width: "120%", marginTop: "1rem" }}>
-            {bottomBtnText}
-          </p>
+          <p style={{ color: "#FFF", marginTop: "1rem" }}>{bottomBtnText}</p>
         </ButtonDiv>
         <Balls top={"0"} right={"0"} ballImage={ballImage} />
       </AbsoluteContainer>

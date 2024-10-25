@@ -1,7 +1,15 @@
 import React from "react";
-import { Helmet } from "react-helmet";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Balls from "./design/Balls";
+
+const scaleImg = keyframes`
+from {
+  scale: 0.8;
+}
+to {
+  scale: 1;
+}
+`;
 
 const Container = styled.section`
   padding: 4rem;
@@ -44,6 +52,13 @@ const Container = styled.section`
     max-width: ${(props) => props.imageWidth || "100%"};
     height: ${(props) => props.imageHeight || "900px"};
     margin-inline: auto;
+
+    -webkit-animation: ${scaleImg} ease-in-out both;
+    -moz-animation: ${scaleImg} ease-in-out both;
+    -o-animation: ${scaleImg} ease-in-out both;
+    animation: ${scaleImg} ease-in-out both;
+    animation-timeline: view();
+    animation-range: entry 0;
   }
 `;
 

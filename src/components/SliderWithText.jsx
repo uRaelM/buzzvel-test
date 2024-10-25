@@ -70,7 +70,11 @@ const SliderWithText = ({
           marginBlock: "8rem",
         }}
       >
-        <Slider testimoniesList={testimoniesList} btnColor={btnColor} />
+        <Slider
+          testimoniesList={testimoniesList}
+          btnColor={btnColor}
+          btnHoverColor={btnHoverColor}
+        />
       </div>
     </Container>
   );

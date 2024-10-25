@@ -7,7 +7,53 @@ import { Keyboard, Autoplay } from "swiper/modules";
 import Testemony from "./Testimony";
 import Arrow from "./icons/Arrow";
 
-const Slider = ({ testimoniesList, btnColor }) => {
+const Card = styled.div`
+  width: 300px;
+  height: 400px;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: #333;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease;
+  cursor: pointer;
+  padding: 2rem;
+  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+
+  .swiper-slide-active & {
+    transform: scale(1.05);
+  }
+`;
+
+const swiperContainer = {
+  overflow: "visible",
+  width: "calc(100% + 8rem)",
+};
+
+const Buttons = styled.div`
+  color: ${(props) => props.btnColor};
+  border: ${(props) =>
+    props.btnColor ? `2px solid ${props.btnColor}` : "2px solid #581C87"};
+  height: 50px;
+  width: 50px;
+  margin: 4rem 2rem 0 0;
+  border-radius: 100%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background: ${(props) => props.btnColor || "#581C87"};
+    color: ${(props) => props.btnHoverColor || "#FCD34D"};
+    transition: all 0.15s ease-in;
+  }
+`;
+
+const Slider = ({ testimoniesList, btnColor, btnHoverColor }) => {
   const [swiperInstance, setSwiperInstance] = useState(null);
   const [direction, setDirection] = useState("next");
 
@@ -93,56 +139,25 @@ const Slider = ({ testimoniesList, btnColor }) => {
         </SwiperSlide>
       ))}
       <div style={{ display: "flex" }}>
-        <Buttons btnColor={btnColor} onClick={handlePrev}>
+        <Buttons
+          btnColor={btnColor}
+          btnHoverColor={btnHoverColor}
+          onClick={handlePrev}
+        >
           <Arrow color={btnColor} />
         </Buttons>
-        <Buttons btnColor={btnColor} onClick={handleNext}>
+        <Buttons
+          btnColor={btnColor}
+          btnHoverColor={btnHoverColor}
+          onClick={handleNext}
+        >
           <div style={{ rotate: "180deg", marginBottom: "0.2rem" }}>
-            <Arrow color={btnColor} />
+            <Arrow />
           </div>
         </Buttons>
       </div>
     </Swiper>
   );
 };
-
-const Card = styled.div`
-  width: 300px;
-  height: 400px;
-  background-color: #fff;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-  color: #333;
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
-  transition: transform 0.4s ease;
-  cursor: pointer;
-  padding: 2rem;
-  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-
-  .swiper-slide-active & {
-    transform: scale(1.05);
-  }
-`;
-
-const swiperContainer = {
-  overflow: "visible",
-  width: "calc(100% + 8rem)",
-};
-
-const Buttons = styled.div`
-  border: ${(props) =>
-    props.btnColor ? `2px solid ${props.btnColor}` : "2px solid #581C87"};
-  height: 50px;
-  width: 50px;
-  margin: 4rem 2rem 0 0;
-  border-radius: 100%;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
 
 export default Slider;

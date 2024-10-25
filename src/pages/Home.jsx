@@ -1,4 +1,7 @@
 import { Helmet } from "react-helmet";
+import { useEffect } from "react";
+import Lenis from "lenis";
+
 import Navbar from "../components/Navbar";
 import MainSection from "../components/MainSection";
 import TextBigImage from "../components/TextBigImage";
@@ -8,6 +11,16 @@ import SliderWithText from "../components/SliderWithText";
 import Footer from "../components/Footer";
 
 function Home() {
+  // Lenis Smooth Scroll Config
+  useEffect(() => {
+    const lenis = new Lenis();
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+  }, []);
+
   return (
     <>
       <Helmet>
@@ -172,7 +185,13 @@ function Home() {
         ballImage={"assets/img/balls/light-purple.png"}
       />
 
-      <Footer />
+      {/*
+      logo (Imagem a ser exibida)
+      logoHeight (Tamanho da imagem)
+      backgroundColor (cor do background)
+      textColor (cor do texto)
+      */}
+      <Footer logo={"assets/img/logo-2.png"} />
     </>
   );
 }

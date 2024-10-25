@@ -1,9 +1,11 @@
-import React from "react";
+import React, { Children, useRef } from "react";
 import styled from "styled-components";
 import Balls from "./design/Balls";
+import { useScroll, motion, useTransform } from "framer-motion";
 
 // Styled components
 const GridContainer = styled.section`
+  margin-block: 2rem;
   padding: 4rem;
   width: calc(100% - 8rem);
   height: calc(1100px - 8rem);
@@ -53,6 +55,11 @@ const TextSection = styled.div`
   }
 `;
 
+const Word = ({ children, range, progress }) => {
+  const opacity = useTransform(progress, range, [0.1, 1]);
+  return <motion.span style={{ opacity }}>{children}</motion.span>;
+};
+
 function ImageWithGrid({
   textColor,
   subTitleColor,
@@ -64,6 +71,12 @@ function ImageWithGrid({
   ballInnerImage,
   invert = false,
 }) {
+  const element = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: element,
+    offset: ["start 1.2", "start 65vh"],
+  });
+
   return (
     <GridContainer
       textColor={textColor}
@@ -71,61 +84,53 @@ function ImageWithGrid({
       invert={invert}
     >
       {/* Imagem na esqueda */}
-      {!invert ? (
-        <>
-          <Balls
-            top="10"
-            left="-75"
-            ballImage={ballImage}
-            width="1000"
-            height="1000"
-            innerImage={ballInnerImage}
-            innerImageLeft={"30"}
-          />
 
-          <TextGrid>
-            <TitleSubTitle>
-              <h3>{subtitle}</h3>
-              <h1>{title}</h1>
-              <p>{paragraph}</p>
-            </TitleSubTitle>
-            {titleTextArray.map((item, index) => (
-              <TextSection key={index}>
-                <h4>{item.title}</h4>
-                <p>{item.paragraph}</p>
-              </TextSection>
-            ))}
-          </TextGrid>
-        </>
-      ) : (
-        <>
-          <TextGrid>
-            <TitleSubTitle>
-              <h3>{subtitle}</h3>
-              <h1>{title}</h1>
-              <p>{paragraph}</p>
-            </TitleSubTitle>
-            {titleTextArray.map((item, index) => (
-              <TextSection key={index}>
-                <h4>{item.title}</h4>
-                <p>{item.paragraph}</p>
-              </TextSection>
-            ))}
-          </TextGrid>
-
-          <Balls
-            top="0"
-            right="-500"
-            ballImage={ballImage}
-            width="1000"
-            height="1000"
-            innerImage={ballInnerImage}
-            innerImageLeft={"30"}
-          />
-        </>
+      {!invert && (
+        <Balls
+          top="10"
+          left="-75"
+          ballImage={ballImage}
+          width="1000"
+          height="1000"
+          innerImage={ballInnerImage}
+          innerImageLeft={"30"}
+        />
+      )}
+      <TextGrid>
+        <TitleSubTitle>
+          <h3>{subtitle}</h3>
+          <h1>{title}</h1>
+          <p>{paragraph}</p>
+        </TitleSubTitle>
+        {titleTextArray.map((item, index) => (
+          <TextSection key={index}>
+            <h4>{item.title}</h4>
+            <p ref={element}>
+              {item.paragraph.split("").map((word, i) => {
+                const start = i / item.paragraph.split("").length;
+                const end = start + 1 / item.paragraph.split("").length;
+                return (
+                  <Word key={i} range={[start, end]} progress={scrollYProgress}>
+                    {word}
+                  </Word>
+                );
+              })}
+            </p>
+          </TextSection>
+        ))}
+      </TextGrid>
+      {invert && (
+        <Balls
+          top="0"
+          right="-500"
+          ballImage={ballImage}
+          width="1000"
+          height="1000"
+          innerImage={ballInnerImage}
+          innerImageLeft={"30"}
+        />
       )}
     </GridContainer>
   );
 }
-
 export default ImageWithGrid;

@@ -14,7 +14,7 @@ const FooterContainer = styled.footer`
     align-items: center;
 
     img {
-      height: 35px;
+      height: ${(props) => props.logoHeight || "35px"};
       width: auto;
     }
   }
@@ -33,19 +33,34 @@ const FooterContainer = styled.footer`
   }
 `;
 
-const Footer = () => {
+const FooterLink = styled.a`
+  color: ${(props) => props.textColor || "#0f172a"};
+  text-decoration: none;
+  transition: color 0.15s ease-in;
+  cursor: pointer;
+  &:hover {
+    color: #f0a500;
+  }
+`;
+
+const Footer = ({ logo, logoHeight, backgroundColor, textColor }) => {
   return (
-    <FooterContainer>
+    <FooterContainer
+      logo={logo}
+      logoHeight={logoHeight}
+      backgroundColor={backgroundColor}
+      textColor={textColor}
+    >
       <div className="first-div">
-        <img src="assets/img/logo-2.png" />
+        <img src={logo} />
       </div>
       <div className="middle-div">
         <p>@ 2023 Soller, Inc. All rights reserved.</p>
       </div>
       <div className="last-div">
-        <a>Terms</a>
-        <a>Privacy</a>
-        <a>Support</a>
+        <FooterLink>Terms</FooterLink>
+        <FooterLink>Privacy</FooterLink>
+        <FooterLink>Support</FooterLink>
       </div>
     </FooterContainer>
   );

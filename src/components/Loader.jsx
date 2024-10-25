@@ -41,7 +41,7 @@ const Loader = () => {
     const handleImageLoad = async () => {
       loadedImages++;
       if (loadedImages === totalImages) {
-        await wait(1000);
+        await wait(2000);
         setIsLoading(false);
       }
     };

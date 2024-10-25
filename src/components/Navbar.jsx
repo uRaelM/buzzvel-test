@@ -37,7 +37,13 @@ const NavLink = styled.a`
 
 const RightNavbar = styled(LeftNavbar)`
   span {
+    margin: auto 0 auto -1.5rem;
     color: ${(props) => props.numberTextColor || "#0369A1"};
+  }
+
+  img {
+    height: 25px;
+    width: 25px;
   }
 `;
 
@@ -72,6 +78,7 @@ function Navbar({
           ))}
         </LeftNavbar>
         <RightNavbar>
+          <img src="assets/icons/phone.png" />
           <span numberTextColor={numberTextColor}>555 818 282</span>
           <CallBtn
             callBtnColor={callBtnColor}

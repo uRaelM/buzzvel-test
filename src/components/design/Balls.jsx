@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 const Container = styled.div`
   position: relative;
@@ -23,7 +24,7 @@ const BallContainer = styled.div`
   background-size: contain;
 `;
 
-const BallImageContainer = styled.div`
+const BallImageContainer = styled(motion.div)`
   position: relative;
   width: 100%;
   height: 100%;
@@ -39,6 +40,22 @@ const InnerImage = styled.img`
   height: 100%;
   object-fit: contain;
 `;
+
+const bounceVariants = {
+  offscreen: {
+    y: 300,
+    opacity: 0,
+  },
+  onscreen: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: "spring",
+      bounce: 0.4,
+      duration: 0.8,
+    },
+  },
+};
 
 const Balls = ({
   top,
@@ -63,7 +80,12 @@ const Balls = ({
         width={width}
         height={height}
       >
-        <BallImageContainer>
+        <BallImageContainer
+          variants={bounceVariants} // Aplica a animação
+          initial="offscreen"
+          whileInView="onscreen"
+          viewport={{ once: true, amount: 0.15 }}
+        >
           {innerImage && (
             <InnerImage
               innerImageTop={innerImageTop}
