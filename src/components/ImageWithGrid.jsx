@@ -1,4 +1,4 @@
-import React, { Children, useRef } from "react";
+import React, { useEffect, useState, Children, useRef } from "react";
 import styled from "styled-components";
 import Balls from "./design/Balls";
 import { useScroll, motion, useTransform } from "framer-motion";
@@ -14,24 +14,25 @@ const GridContainer = styled.section`
   gap: 20px;
   color: ${(props) => props.textColor || "#0f172a"};
 
-  h1 {
-    font-size: 4rem;
-    font-weight: 800;
-  }
-
   h3 {
     font-weight: 400;
     color: ${(props) => props.subTitleColor || "#D97706"};
   }
 
-  p {
-    line-height: 2rem;
-    font-weight: 400;
-    font-size: 1.2rem;
+  @media (max-width: 480px) {
+    text-align: center;
+    padding: 1rem;
+    width: calc(100% - 2rem);
+    height: auto;
+    grid-template-columns: 1fr;
   }
 `;
 
-const ImageGrid = styled.div``;
+const ImageGrid = styled.div`
+  @media (max-width: 480px) {
+    height: 350px;
+  }
+`;
 
 const TextGrid = styled.div`
   margin-block: auto;
@@ -41,10 +42,18 @@ const TextGrid = styled.div`
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: auto auto auto;
   gap: 20px;
+
+  @media (max-width: 480px) {
+    height: auto;
+    grid-row: 1;
+  }
 `;
 
 const TitleSubTitle = styled.div`
   grid-column: span 2;
+  @media (max-width: 480px) {
+    margin-bottom: 4rem;
+  }
 `;
 
 const TextSection = styled.div`
@@ -52,6 +61,10 @@ const TextSection = styled.div`
     font-size: 1.4rem;
     font-weight: bold;
     margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 1.1rem;
   }
 `;
 
@@ -71,10 +84,45 @@ function ImageWithGrid({
   ballInnerImage,
   invert = false,
 }) {
+  const [top1, setTop1] = useState(10);
+  const [left1, setLeft1] = useState(-75);
+  const [top2, setTop2] = useState(0);
+  const [right2, setRight2] = useState(-500);
+  const [offsetMobile, setOffsetMobile] = useState("1.2");
+  const [offsetScreenMobile, setOffsetScreenMobile] = useState("65");
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 480px)");
+
+    const updatePositions = () => {
+      if (!mediaQuery.matches) {
+        setTop1(0);
+        setLeft1(-25);
+        setTop2(-10);
+        setRight2(-190);
+        setOffsetMobile("2");
+        setOffsetScreenMobile("130");
+      } else {
+        setTop1(10);
+        setLeft1(-75);
+        setTop2(0);
+        setRight2(-500);
+        setOffsetMobile("1.2");
+        setOffsetScreenMobile("65");
+      }
+    };
+
+    updatePositions();
+
+    mediaQuery.addEventListener("change", updatePositions);
+
+    return () => mediaQuery.removeEventListener("change", updatePositions);
+  }, []);
+
   const element = useRef(null);
   const { scrollYProgress } = useScroll({
     target: element,
-    offset: ["start 1.2", "start 65vh"],
+    offset: [`start ${offsetMobile}`, `start ${offsetScreenMobile}vh`],
   });
 
   return (
@@ -86,15 +134,18 @@ function ImageWithGrid({
       {/* Imagem na esqueda */}
 
       {!invert && (
-        <Balls
-          top="10"
-          left="-75"
-          ballImage={ballImage}
-          width="1000"
-          height="1000"
-          innerImage={ballInnerImage}
-          innerImageLeft={"30"}
-        />
+        <ImageGrid>
+          <Balls
+            top={top1}
+            left={left1}
+            ballImage={ballImage}
+            width="1000"
+            height="1000"
+            innerImageTop={"52.1"}
+            innerImage={ballInnerImage}
+            innerImageLeft={"30"}
+          />
+        </ImageGrid>
       )}
       <TextGrid>
         <TitleSubTitle>
@@ -120,15 +171,18 @@ function ImageWithGrid({
         ))}
       </TextGrid>
       {invert && (
-        <Balls
-          top="0"
-          right="-500"
-          ballImage={ballImage}
-          width="1000"
-          height="1000"
-          innerImage={ballInnerImage}
-          innerImageLeft={"30"}
-        />
+        <ImageGrid>
+          <Balls
+            top={top2}
+            right={right2}
+            ballImage={ballImage}
+            width="1000"
+            height="1000"
+            innerImageTop={"52.1"}
+            innerImage={ballInnerImage}
+            innerImageLeft={"30"}
+          />
+        </ImageGrid>
       )}
     </GridContainer>
   );

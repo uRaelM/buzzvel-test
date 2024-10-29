@@ -31,6 +31,21 @@ const FooterContainer = styled.footer`
     justify-content: flex-start;
     gap: 20px;
   }
+
+  @media (max-width: 480px) {
+    height: auto;
+    grid-template-columns: 1fr;
+    gap: 25px;
+
+    .middle-div {
+      justify-content: center;
+    }
+
+    .last-div {
+      justify-content: center;
+      gap: 20px;
+    }
+  }
 `;
 
 const FooterLink = styled.a`

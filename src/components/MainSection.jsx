@@ -1,5 +1,4 @@
-import React from "react";
-import { Helmet } from "react-helmet";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import CallBtn from "./ui/CallBtn";
 import Testemony from "./Testimony";
@@ -7,11 +6,18 @@ import Balls from "./design/Balls";
 
 const Home = styled.main`
   padding: 4rem;
-  width: 100%;
+  width: calc(100% - 8rem);
   height: calc(700px - 8rem);
   display: grid;
   grid-template-columns: 1fr 1fr;
   color: ${(props) => props.textColor || "#0f172a"};
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+    width: calc(100% - 1rem);
+    height: auto;
+    grid-template-columns: 1fr;
+  }
 `;
 
 const LeftSection = styled.div`
@@ -24,19 +30,45 @@ const LeftSection = styled.div`
   max-width: 550px;
   height: 90%;
 
+  .button-div {
+    margin: 1rem auto 0 0;
+  }
+
   h1 {
     font-weight: 800;
     font-size: 4rem;
   }
 
   h3 {
-    font-weight: 400;
     font-size: 1.4rem;
     line-height: 2rem;
   }
+
+  @media (max-width: 480px) {
+    text-align: center;
+    gap: 10px;
+
+    .button-div {
+      margin: 1rem auto;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      line-height: 2rem;
+    }
+  }
 `;
 
-const RightSection = styled.div``;
+const RightSection = styled.div`
+  height: 250px;
+  @media (max-width: 480px) {
+    grid-row: 1;
+  }
+`;
 
 function MainSection({
   textColor,
@@ -50,6 +82,23 @@ function MainSection({
   ballImage,
   innerImageBall,
 }) {
+  const [right, setRight] = useState(-20);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 480px)");
+
+    // Define o valor com base na largura da tela
+    const updateValue = () => {
+      setRight(mediaQuery.matches ? -70 : -20);
+    };
+
+    updateValue(); // Executa na montagem do componente
+
+    mediaQuery.addEventListener("change", updateValue); // Escuta mudanças de tamanho
+
+    return () => mediaQuery.removeEventListener("change", updateValue); // Cleanup
+  }, []);
+
   return (
     <div>
       <Home textColor={textColor}>
@@ -59,12 +108,13 @@ function MainSection({
             Viverra viverra nibh enim et aliquam, enim. Tempor, sit mus viverra
             orci dui consequat turpis scelerisque.
           </h3>
-          <CallBtn
-            callBtnColor={callBtnColor}
-            callBtnHoverColor={callBtnHoverColor}
-            callBtnText={callBtnText}
-            style={{ margin: "1rem auto 0 0" }}
-          />
+          <div className="button-div">
+            <CallBtn
+              callBtnColor={callBtnColor}
+              callBtnHoverColor={callBtnHoverColor}
+              callBtnText={callBtnText}
+            />
+          </div>
           <Testemony
             testimonyText={testimonyText}
             imgSrc={imgSrcTestimony}
@@ -75,7 +125,7 @@ function MainSection({
         <RightSection>
           <Balls
             top={"-150"}
-            right={"0"}
+            right={right}
             ballImage={ballImage}
             innerImage={innerImageBall}
           />

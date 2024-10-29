@@ -22,6 +22,11 @@ const BallContainer = styled.div`
   background-image: url(${({ ballImage }) => ballImage});
   background-repeat: no-repeat;
   background-size: contain;
+
+  @media (max-width: 480px) {
+    width: ${({ width }) => (width ? width * 0.4 : "300")}px;
+    height: ${({ height }) => (height ? height * 0.4 : "400")}px;
+  }
 `;
 
 const BallImageContainer = styled(motion.div)`
@@ -39,6 +44,11 @@ const InnerImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: contain;
+
+  @media (max-width: 480px) {
+    top: ${({ innerImageTop }) => innerImageTop || "45"}%;
+    left: ${({ innerImageLeft }) => innerImageLeft || "50"}%;
+  }
 `;
 
 const bounceVariants = {
@@ -57,6 +67,11 @@ const bounceVariants = {
   },
 };
 
+{
+  /* Valores de top, bottom, left, right, width e height devem ser em pixels e sem o px no final 
+  Valores de innerImage Top e Left, são em % e não devem ter % no final
+  */
+}
 const Balls = ({
   top,
   bottom,
@@ -81,10 +96,10 @@ const Balls = ({
         height={height}
       >
         <BallImageContainer
-          variants={bounceVariants} // Aplica a animação
+          variants={bounceVariants}
           initial="offscreen"
           whileInView="onscreen"
-          viewport={{ once: true, amount: 0.15 }}
+          viewport={{ once: false, amount: 0.15 }}
         >
           {innerImage && (
             <InnerImage

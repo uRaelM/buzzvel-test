@@ -5,9 +5,10 @@ const TestimonyItem = styled.div`
   margin: auto 0 2rem 0;
 
   p {
-    font-weight: 400;
+    margin: 0;
     font-size: 1.1rem;
     line-height: 1.8rem;
+    font-weight: 400;
   }
 
   .testimony-data {
@@ -31,14 +32,23 @@ const TestimonyItem = styled.div`
       margin-left: 0.5rem;
       font-weight: 400;
 
-      p {
-        margin: 0;
-      }
-
       span {
         color: #475569;
         margin-right: auto;
       }
+    }
+  }
+
+  @media (max-width: 480px) {
+    margin: auto 0;
+    text-align: left;
+
+    div {
+      margin-right: 0rem;
+    }
+
+    p {
+      font-size: 1rem;
     }
   }
 `;

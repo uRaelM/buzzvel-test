@@ -19,13 +19,18 @@ const LoadingScreen = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999; /* Certifique-se de que o loader esteja no topo */
+  z-index: 9999;
+
+  @media (max-width: 480px) {
+    width: 105vw;
+    height: 105vh;
+  }
 `;
 
 // Logo animado
 const Logo = styled.img`
   width: 200px;
-  animation: ${blink} 1s infinite; /* Faz o logo piscar */
+  animation: ${blink} 1s infinite;
 `;
 
 const Loader = () => {

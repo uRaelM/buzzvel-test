@@ -13,20 +13,11 @@ const Container = styled.section`
   overflow: hidden;
 
   h1 {
-    font-size: 3rem;
-    font-weight: 800;
     margin-block: 0.5rem;
   }
 
   h3 {
     color: ${(props) => props.subTitleColor || "#FCD34D"};
-    margin-block: 0.5rem;
-  }
-
-  p {
-    line-height: 2rem;
-    font-weight: 400;
-    font-size: 1.2rem;
     margin-block: 0.5rem;
   }
 `;

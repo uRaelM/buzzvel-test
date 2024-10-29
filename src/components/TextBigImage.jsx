@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import Balls from "./design/Balls";
 
 const scaleImg = keyframes`
 from {
-  scale: 0.8;
+  transform: scale(0.8);
 }
 to {
-  scale: 1;
+  transform: scale(1);
 }
 `;
 
@@ -28,29 +28,26 @@ const Container = styled.section`
     margin-left: ${(props) => (props.textleft ? "16rem" : "")};
   }
 
-  h1 {
-    font-size: 4rem;
-    font-weight: 800;
-  }
-
   h3 {
-    font-weight: 400;
+    z-index: 290;
     color: ${(props) => props.subTitleColor || "#D97706"};
   }
 
+  h1 {
+    z-index: 290;
+  }
+
   p {
+    z-index: 290;
     width: 50%;
     margin: 2rem auto 4rem auto;
     text-align: center;
-    line-height: 2rem;
-    font-weight: 400;
-    font-size: 1.4rem;
   }
 
   img {
     z-index: 2;
     max-width: ${(props) => props.imageWidth || "100%"};
-    height: ${(props) => props.imageHeight || "900px"};
+    height: ${(props) => props.imageHeight || "900"}px;
     margin-inline: auto;
 
     -webkit-animation: ${scaleImg} ease-in-out both;
@@ -59,6 +56,20 @@ const Container = styled.section`
     animation: ${scaleImg} ease-in-out both;
     animation-timeline: view();
     animation-range: entry 0;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+    width: calc(100% - 2rem);
+    height: auto;
+
+    img {
+      height: ${(props) => props.imageHeight * 0.25 || "250"}px;
+    }
+
+    p {
+      width: 90%;
+    }
   }
 `;
 
@@ -76,6 +87,35 @@ function TextBigImage({
   backgroundColor,
   textleft = false,
 }) {
+  const [top1, setTop1] = useState(60);
+  const [right1, setRight1] = useState(-1275);
+  const [bottom2, setBottom2] = useState(300);
+  const [left2, setLeft2] = useState(-75);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 480px)");
+
+    const updatePositions = () => {
+      if (!mediaQuery.matches) {
+        setTop1(-25);
+        setRight1(-325);
+        setBottom2(70);
+        setLeft2(-120);
+      } else {
+        setTop1(60);
+        setRight1(-1275);
+        setBottom2(300);
+        setLeft2(-75);
+      }
+    };
+
+    updatePositions();
+
+    mediaQuery.addEventListener("change", updatePositions);
+
+    return () => mediaQuery.removeEventListener("change", updatePositions);
+  }, []);
+
   return (
     <Container
       backgroundColor={backgroundColor}
@@ -94,16 +134,16 @@ function TextBigImage({
         ballImage={ballOne}
         height={"600"}
         width={"600"}
-        top={"60"}
-        right={"-1275"}
+        top={top1}
+        right={right1}
       />
       <img src={image} />
       <Balls
         ballImage={ballTwo}
         height={"750"}
         width={"750"}
-        bottom={"300"}
-        left={"-75"}
+        bottom={bottom2}
+        left={left2}
       />
     </Container>
   );

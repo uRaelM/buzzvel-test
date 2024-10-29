@@ -141,7 +141,7 @@ function Home() {
       btnHoverColor (cor do texto do botão em hover)
       */}
 
-      <SliderWithText
+      {/* <SliderWithText
         title={"Make something awesome"}
         subtitle={"Join other Sun harvesters"}
         paragraph={
@@ -150,7 +150,7 @@ function Home() {
         btnColor={"#FCD34D"}
         btnHoverColor={"#78350F"}
         testimoniesList={testimonies}
-      />
+      /> */}
 
       {/*
       Está reutilizando TextBigImage, Balls e CallBtn
@@ -169,7 +169,7 @@ function Home() {
       bottomBtnText, (Texto abaixo do botão)
       ballImage,
       */}
-      <TextBigImageButton
+      {/* <TextBigImageButton
         title={"All the power that you need for your house is now available"}
         textColor={"#FFF"}
         subtitle={"Get the Sun to power your home"}
@@ -183,7 +183,7 @@ function Home() {
         callBtnHoverColor={"#78350F"}
         bottomBtnText={"Egestas fringilla aliquam leo"}
         ballImage={"assets/img/balls/light-purple.png"}
-      />
+      /> */}
 
       {/*
       logo (Imagem a ser exibida)

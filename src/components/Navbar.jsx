@@ -10,6 +10,10 @@ const NavbarWrapper = styled.nav`
   padding: 1rem 4rem;
   background-color: ${(props) => props.backgroundColor || "transparent"};
   color: ${(props) => props.textColor || "#0f172a"};
+
+  @media (max-width: 480px) {
+    padding: 1rem 1rem;
+  }
 `;
 
 const LeftNavbar = styled.div`
@@ -18,12 +22,20 @@ const LeftNavbar = styled.div`
   align-items: center;
   gap: 2rem;
   z-index: 2;
+
+  @media (max-width: 480px) {
+    justify-content: flex-start;
+  }
 `;
 
 const Logo = styled.img`
   width: ${(props) => props.logoWidth || "100%"};
   height: ${(props) => props.logoHeight || "50px"};
   margin-right: 2rem;
+
+  @media (max-width: 480px) {
+    margin-right: 0rem;
+  }
 `;
 
 const NavLink = styled.a`
@@ -32,6 +44,10 @@ const NavLink = styled.a`
   transition: color 0.15s ease-in;
   &:hover {
     color: #f0a500;
+  }
+
+  @media (max-width: 480px) {
+    display: none;
   }
 `;
 
@@ -44,6 +60,10 @@ const RightNavbar = styled(LeftNavbar)`
   img {
     height: 25px;
     width: 25px;
+  }
+
+  @media (max-width: 480px) {
+    display: none;
   }
 `;
 
