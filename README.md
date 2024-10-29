@@ -51,7 +51,7 @@ Certifique-se de que você tem as seguintes ferramentas instaladas:
 
    ```bash
    git clone https://github.com/uRaelM/buzzvel-test
-   cd Soller
+   cd buzzvel-test
 
    ```
 
