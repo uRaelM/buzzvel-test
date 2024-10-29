@@ -10,10 +10,6 @@ const NavbarWrapper = styled.nav`
   padding: 1rem 4rem;
   background-color: ${(props) => props.backgroundColor || "transparent"};
   color: ${(props) => props.textColor || "#0f172a"};
-
-  @media (max-width: 480px) {
-    padding: 1rem 1rem;
-  }
 `;
 
 const LeftNavbar = styled.div`

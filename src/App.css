@@ -39,3 +39,13 @@ p {
     font-size: 1rem;
   }
 }
+
+@media (max-width: 350px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}

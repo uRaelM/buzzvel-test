@@ -31,6 +31,7 @@ function Home() {
       Está reutilizando CallBtn
       Propriedades de Navbar: 
 
+      links(lista de li's da navbar) 
       logo(caminho para a imagem) 
       logoWidth(width para a logo) 
       logoHeight(height para a logo)
@@ -39,7 +40,6 @@ function Home() {
       callBtnColor(Cor do botão de chamada) 
       callBtnHoverColor(Cor do botão de chamada no hover) 
       callBtnText(Cor do texto do botão de chamada) 
-      links(lista de li's da navbar) 
       */}
       <Navbar logo={"assets/img/logo.png"} logoHeight={"25px"} links={links} />
       {/* 
@@ -82,8 +82,8 @@ function Home() {
         imageWidth(width da imagem ex: 900px)
         ballOne(Imagem do primeiro objeto a ser exibido),
         ballTwo(Imagem do segundo objeto a ser exibido),
-        textleft(Se estiver como verdadeiro o texto estará na esqueda)
         backgroundColor(Muda a cor do background)
+        textleft(Se estiver como verdadeiro o texto estará na esqueda)
       */}
       <TextBigImage
         title={"Pick the Sun"}
@@ -104,7 +104,6 @@ function Home() {
         subTitleColor(Cor do subtítulo)
         paragraph(Parágrafo a ser exibido),
         titleTextArray(Titulos e textos para o grid)
-        image(Imagem central a ser exibida),
         ballImage(Objeto a ser exibido),
         ballInnerImage(Imagem a ser exibida dentro do objeto),
         invert(Imagem true = imagem na direita)
@@ -141,7 +140,7 @@ function Home() {
       btnHoverColor (cor do texto do botão em hover)
       */}
 
-      {/* <SliderWithText
+      <SliderWithText
         title={"Make something awesome"}
         subtitle={"Join other Sun harvesters"}
         paragraph={
@@ -150,7 +149,7 @@ function Home() {
         btnColor={"#FCD34D"}
         btnHoverColor={"#78350F"}
         testimoniesList={testimonies}
-      /> */}
+      />
 
       {/*
       Está reutilizando TextBigImage, Balls e CallBtn
@@ -169,13 +168,13 @@ function Home() {
       bottomBtnText, (Texto abaixo do botão)
       ballImage,
       */}
-      {/* <TextBigImageButton
+      <TextBigImageButton
         title={"All the power that you need for your house is now available"}
         textColor={"#FFF"}
         subtitle={"Get the Sun to power your home"}
         image={"assets/img/devices/notebook.png"}
-        imageHeight={"700px"}
-        imageWidth={"1200px"}
+        imageHeight={700}
+        imageWidth={1200}
         backgroundColor={"#7E22CE"}
         subTitleColor={"#FCD34D"}
         textleft={true}
@@ -183,7 +182,7 @@ function Home() {
         callBtnHoverColor={"#78350F"}
         bottomBtnText={"Egestas fringilla aliquam leo"}
         ballImage={"assets/img/balls/light-purple.png"}
-      /> */}
+      />
 
       {/*
       logo (Imagem a ser exibida)

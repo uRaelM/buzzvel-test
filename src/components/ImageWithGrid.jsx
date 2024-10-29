@@ -88,11 +88,12 @@ function ImageWithGrid({
   const [left1, setLeft1] = useState(-75);
   const [top2, setTop2] = useState(0);
   const [right2, setRight2] = useState(-500);
-  const [offsetMobile, setOffsetMobile] = useState("1.2");
-  const [offsetScreenMobile, setOffsetScreenMobile] = useState("65");
+  const [offset, setOffset] = useState("1.2");
+  const [offsetScreen, setOffsetScreen] = useState("65");
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(min-width: 480px)");
+    const mediaQueryBigNotebook = window.matchMedia("(min-width: 1440px)");
 
     const updatePositions = () => {
       if (!mediaQuery.matches) {
@@ -100,15 +101,17 @@ function ImageWithGrid({
         setLeft1(-25);
         setTop2(-10);
         setRight2(-190);
-        setOffsetMobile("2");
-        setOffsetScreenMobile("130");
+        setOffset("2");
+        setOffsetScreen("130");
+      } else if (!mediaQueryBigNotebook) {
+        setRight2(-400);
       } else {
         setTop1(10);
         setLeft1(-75);
         setTop2(0);
         setRight2(-500);
-        setOffsetMobile("1.2");
-        setOffsetScreenMobile("65");
+        setOffset("1.2");
+        setOffsetScreen("65");
       }
     };
 
@@ -122,7 +125,7 @@ function ImageWithGrid({
   const element = useRef(null);
   const { scrollYProgress } = useScroll({
     target: element,
-    offset: [`start ${offsetMobile}`, `start ${offsetScreenMobile}vh`],
+    offset: [`start ${offset}`, `start ${offsetScreen}vh`],
   });
 
   return (

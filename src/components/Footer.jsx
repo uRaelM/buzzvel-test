@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 const FooterContainer = styled.footer`
-  width: 100%;
+  padding: 1rem;
+  width: (100% - 2rem);
+  height: (95px- 2rem);
   background: ${(props) => props.backgroundColor || "#FFF"};
   display: grid;
   grid-template-columns: 1fr 5fr 1fr;
-  height: 95px;
   color: #0f172a;
 
   div {

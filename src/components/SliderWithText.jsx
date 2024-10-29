@@ -20,6 +20,15 @@ const Container = styled.section`
     color: ${(props) => props.subTitleColor || "#FCD34D"};
     margin-block: 0.5rem;
   }
+  @media (max-width: 1250px) {
+    height: calc(1000px - 8rem);
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+    width: calc(100%-2rem);
+    height: auto;
+  }
 `;
 
 const TextGrid = styled.div`
@@ -27,6 +36,30 @@ const TextGrid = styled.div`
   display: grid;
   grid-template-columns: 3fr 1fr;
   margin-bottom: -4rem;
+
+  p {
+    width: 50%;
+  }
+
+  @media (max-width: 1250px) {
+    p {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    text-align: center;
+    grid-template-columns: 1fr;
+
+    .button {
+      margin-top: 2rem;
+      margin-inline: auto;
+    }
+
+    p {
+      width: 100%;
+    }
+  }
 `;
 
 const SliderWithText = ({
@@ -50,9 +83,9 @@ const SliderWithText = ({
         <div>
           <h3>{subtitle}</h3>
           <h1>{title}</h1>
-          <p style={{ width: "50%" }}>{paragraph}</p>
+          <p>{paragraph}</p>
         </div>
-        <div>
+        <div className="button">
           <CallBtn callBtnColor={btnColor} callBtnHoverColor={btnHoverColor} />
         </div>
       </TextGrid>

@@ -26,6 +26,16 @@ const Card = styled.div`
   .swiper-slide-active & {
     transform: scale(1.05);
   }
+
+  @media (max-width: 480px) {
+    width: 250px;
+    height: 315px;
+  }
+
+  @media (max-width: 375px) {
+    width: 225px;
+    height: 315px;
+  }
 `;
 
 const swiperContainer = {
@@ -56,6 +66,34 @@ const Buttons = styled.div`
 const Slider = ({ testimoniesList, btnColor, btnHoverColor }) => {
   const [swiperInstance, setSwiperInstance] = useState(null);
   const [direction, setDirection] = useState("next");
+  const [numberSlides, setNumberSlides] = useState(5);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 480px)");
+    const mediaQuerySmallNotebook = window.matchMedia("(min-width: 1024px)");
+    const mediaQueryNotebook = window.matchMedia("(min-width: 1250px)");
+    const mediaQueryBigNotebook = window.matchMedia("(min-width: 1440px)");
+
+    const updatePositions = () => {
+      if (!mediaQuery.matches) {
+        setNumberSlides(1);
+      } else if (!mediaQuerySmallNotebook.matches) {
+        setNumberSlides(2);
+      } else if (!mediaQueryNotebook.matches) {
+        setNumberSlides(3);
+      } else if (!mediaQueryBigNotebook.matches) {
+        setNumberSlides(3);
+      } else {
+        setNumberSlides(5);
+      }
+    };
+
+    updatePositions();
+
+    mediaQuery.addEventListener("change", updatePositions);
+
+    return () => mediaQuery.removeEventListener("change", updatePositions);
+  }, []);
 
   useEffect(() => {
     console.log(swiperInstance);
@@ -104,7 +142,7 @@ const Slider = ({ testimoniesList, btnColor, btnHoverColor }) => {
       style={swiperContainer}
       grabCursor={true}
       spaceBetween={100}
-      slidesPerView={5}
+      slidesPerView={numberSlides}
       loop={true}
       onSwiper={(swiper) => setSwiperInstance(swiper)}
       onTouchEnd={() => handleAutoPlay(swiperInstance)}

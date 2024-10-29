@@ -23,6 +23,7 @@ const Container = styled.section`
   color: ${(props) => props.textColor || "#0f172a"};
 
   div {
+    z-index: 2;
     text-align: ${(props) => (props.textleft ? "left" : "center")};
     width: ${(props) => (props.textleft ? "55%" : "100%")};
     margin-left: ${(props) => (props.textleft ? "16rem" : "")};
@@ -45,7 +46,8 @@ const Container = styled.section`
   }
 
   img {
-    z-index: 2;
+    z-index: 1000;
+    margin-block: 1rem;
     max-width: ${(props) => props.imageWidth || "100%"};
     height: ${(props) => props.imageHeight || "900"}px;
     margin-inline: auto;
@@ -69,6 +71,12 @@ const Container = styled.section`
 
     p {
       width: 90%;
+    }
+
+    div {
+      text-align: ${(props) => (props.textleft ? "center" : "center")};
+      width: ${(props) => (props.textleft ? "100%" : "100%")};
+      margin-left: ${(props) => (props.textleft ? "0rem" : "")};
     }
   }
 `;

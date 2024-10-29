@@ -23,6 +23,21 @@ const BallContainer = styled.div`
   background-repeat: no-repeat;
   background-size: contain;
 
+  @media (max-width: 1440px) {
+    width: ${({ width }) => (width ? width * 0.75 : "650")}px;
+    height: ${({ height }) => (height ? height * 0.75 : "700")}px;
+  }
+
+  @media (max-width: 1250px) {
+    width: ${({ width }) => (width ? width * 0.6 : "390")}px;
+    height: ${({ height }) => (height ? height * 0.6 : "420")}px;
+  }
+
+  @media (max-width: 768px) {
+    width: ${({ width }) => (width ? width * 0.5 : "325")}px;
+    height: ${({ height }) => (height ? height * 0.5 : "350")}px;
+  }
+
   @media (max-width: 480px) {
     width: ${({ width }) => (width ? width * 0.4 : "300")}px;
     height: ${({ height }) => (height ? height * 0.4 : "400")}px;
