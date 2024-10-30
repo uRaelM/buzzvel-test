@@ -60,7 +60,36 @@ const Container = styled.section`
     animation-range: entry 0;
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 1600px) {
+    div {
+      margin-left: ${(props) => (props.textleft ? "8rem" : "")};
+    }
+  }
+
+  @media (max-width: 1250px) {
+    img {
+      height: ${(props) => props.imageHeight * 0.8 || "720"}px;
+    }
+
+    div {
+      margin-left: ${(props) => (props.textleft ? "4rem" : "")};
+      width: ${(props) => (props.textleft ? "65%" : "100%")};
+    }
+  }
+
+  @media (max-width: 1000px) {
+    img {
+      height: ${(props) => props.imageHeight * 0.6 || "540"}px;
+    }
+
+    div {
+      text-align: ${(props) => (props.textleft ? "center" : "center")};
+      width: ${(props) => (props.textleft ? "100%" : "100%")};
+      margin-left: ${(props) => (props.textleft ? "0rem" : "")};
+    }
+  }
+
+  @media (max-width: 768px) {
     padding: 1rem;
     width: calc(100% - 2rem);
     height: auto;
@@ -71,12 +100,6 @@ const Container = styled.section`
 
     p {
       width: 90%;
-    }
-
-    div {
-      text-align: ${(props) => (props.textleft ? "center" : "center")};
-      width: ${(props) => (props.textleft ? "100%" : "100%")};
-      margin-left: ${(props) => (props.textleft ? "0rem" : "")};
     }
   }
 `;
@@ -101,14 +124,85 @@ function TextBigImage({
   const [left2, setLeft2] = useState(-75);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(min-width: 480px)");
+    const mediaQueryExtraSmall = window.matchMedia("(min-width: 401px)");
+    const mediaQuery = window.matchMedia("(min-width: 481px)");
+    const mediaQuerySmarthphoneM = window.matchMedia("(min-width: 630px)");
+    const mediaQueryTabletP = window.matchMedia("(min-width: 769px)");
+    const mediaQueryTabletM = window.matchMedia("(min-width: 851px)");
+    const mediaQueryTabletG = window.matchMedia("(min-width: 1051px)");
+    const mediaQueryNotebook = window.matchMedia("(min-width: 1151px)");
+    const mediaQueryPNotebook = window.matchMedia("(min-width: 1251px)");
+    const mediaQueryMNotebook = window.matchMedia("(min-width: 1351px)");
+    const mediaQueryLNotebook = window.matchMedia("(min-width: 1441px)");
+    const mediaQueryBigNotebook = window.matchMedia("(min-width: 1550px)");
 
     const updatePositions = () => {
-      if (!mediaQuery.matches) {
+      if (!mediaQueryExtraSmall.matches) {
+        console.log("celular");
         setTop1(-25);
-        setRight1(-325);
+        setRight1(-225);
         setBottom2(70);
         setLeft2(-120);
+      } else if (!mediaQuery.matches) {
+        console.log("celular");
+        setTop1(-25);
+        setRight1(-300);
+        setBottom2(70);
+        setLeft2(-120);
+      } else if (!mediaQuerySmarthphoneM.matches) {
+        console.log("notebook");
+        setTop1(-50);
+        setRight1(-400);
+        setBottom2(0);
+        setLeft2(-75);
+      } else if (!mediaQueryTabletP.matches) {
+        console.log("notebook");
+        setTop1(-50);
+        setRight1(-475);
+        setBottom2(0);
+        setLeft2(-75);
+      } else if (!mediaQueryTabletM.matches) {
+        console.log("notebook");
+        setTop1(80);
+        setRight1(-575);
+        setBottom2(300);
+        setLeft2(-75);
+      } else if (!mediaQueryTabletG.matches) {
+        console.log("notebook");
+        setTop1(80);
+        setRight1(-675);
+        setBottom2(300);
+        setLeft2(-75);
+      } else if (!mediaQueryNotebook.matches) {
+        console.log("notebook");
+        setTop1(80);
+        setRight1(-875);
+        setBottom2(300);
+        setLeft2(-75);
+      } else if (!mediaQueryPNotebook.matches) {
+        console.log("notebook P");
+        setTop1(80);
+        setRight1(-975);
+        setBottom2(300);
+        setLeft2(-75);
+      } else if (!mediaQueryMNotebook.matches) {
+        console.log("notebook M");
+        setTop1(80);
+        setRight1(-875);
+        setBottom2(300);
+        setLeft2(-75);
+      } else if (!mediaQueryLNotebook.matches) {
+        console.log("notebook l");
+        setTop1(80);
+        setRight1(-1075);
+        setBottom2(300);
+        setLeft2(-75);
+      } else if (!mediaQueryBigNotebook.matches) {
+        console.log("notebook g");
+        setTop1(60);
+        setRight1(-1175);
+        setBottom2(250);
+        setLeft2(-75);
       } else {
         setTop1(60);
         setRight1(-1275);
@@ -119,7 +213,17 @@ function TextBigImage({
 
     updatePositions();
 
+    mediaQueryPNotebook.addEventListener("change", updatePositions);
+    mediaQueryExtraSmall.addEventListener("change", updatePositions);
     mediaQuery.addEventListener("change", updatePositions);
+    mediaQueryBigNotebook.addEventListener("change", updatePositions);
+    mediaQueryLNotebook.addEventListener("change", updatePositions);
+    mediaQueryMNotebook.addEventListener("change", updatePositions);
+    mediaQueryNotebook.addEventListener("change", updatePositions);
+    mediaQueryTabletG.addEventListener("change", updatePositions);
+    mediaQueryTabletM.addEventListener("change", updatePositions);
+    mediaQueryTabletP.addEventListener("change", updatePositions);
+    mediaQuerySmarthphoneM.addEventListener("change", updatePositions);
 
     return () => mediaQuery.removeEventListener("change", updatePositions);
   }, []);

@@ -20,14 +20,29 @@ const Container = styled.section`
     color: ${(props) => props.subTitleColor || "#FCD34D"};
     margin-block: 0.5rem;
   }
+
   @media (max-width: 1250px) {
     height: calc(1000px - 8rem);
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 1000px) {
+    height: calc(1100px - 8rem);
+  }
+
+  @media (max-width: 768px) {
     padding: 1rem;
     width: calc(100%-2rem);
     height: auto;
+  }
+
+  @media (max-width: 480px) {
+    padding: 2rem;
+    width: calc(100%-4rem);
+  }
+
+  @media (max-width: 350px) {
+    padding: 1rem;
+    width: calc(100%-2rem);
   }
 `;
 
@@ -47,7 +62,7 @@ const TextGrid = styled.div`
     }
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 768px) {
     text-align: center;
     grid-template-columns: 1fr;
 

@@ -69,20 +69,20 @@ const Slider = ({ testimoniesList, btnColor, btnHoverColor }) => {
   const [numberSlides, setNumberSlides] = useState(5);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(min-width: 480px)");
+    const mediaQuery = window.matchMedia("(min-width: 769px)");
     const mediaQuerySmallNotebook = window.matchMedia("(min-width: 1024px)");
-    const mediaQueryNotebook = window.matchMedia("(min-width: 1250px)");
-    const mediaQueryBigNotebook = window.matchMedia("(min-width: 1440px)");
+    const mediaQueryDesktop = window.matchMedia("(min-width: 1440px)");
+    const mediaQueryBigDesktop = window.matchMedia("(min-width: 1800px)");
 
     const updatePositions = () => {
       if (!mediaQuery.matches) {
         setNumberSlides(1);
       } else if (!mediaQuerySmallNotebook.matches) {
         setNumberSlides(2);
-      } else if (!mediaQueryNotebook.matches) {
+      } else if (!mediaQueryDesktop.matches) {
         setNumberSlides(3);
-      } else if (!mediaQueryBigNotebook.matches) {
-        setNumberSlides(3);
+      } else if (!mediaQueryBigDesktop.matches) {
+        setNumberSlides(4);
       } else {
         setNumberSlides(5);
       }
@@ -91,6 +91,9 @@ const Slider = ({ testimoniesList, btnColor, btnHoverColor }) => {
     updatePositions();
 
     mediaQuery.addEventListener("change", updatePositions);
+    mediaQuerySmallNotebook.addEventListener("change", updatePositions);
+    mediaQueryDesktop.addEventListener("change", updatePositions);
+    mediaQueryBigDesktop.addEventListener("change", updatePositions);
 
     return () => mediaQuery.removeEventListener("change", updatePositions);
   }, []);

@@ -6,7 +6,19 @@ import Balls from "./design/Balls";
 
 const AbsoluteContainer = styled.section`
   position: relative;
-  bottom: -80px;
+  bottom: -250px;
+
+  @media (max-width: 1000px) {
+    bottom: -550px;
+  }
+
+  @media (max-width: 905px) {
+    bottom: -600px;
+  }
+
+  @media (max-width: 768px) {
+    bottom: -325px;
+  }
 
   @media (max-width: 480px) {
     bottom: -350px;
@@ -14,11 +26,12 @@ const AbsoluteContainer = styled.section`
 `;
 
 const ButtonDiv = styled.div`
-  z-index: 2;
+  z-index: 1000;
   position: relative;
-  top: 12rem;
-  left: 77%;
-  width: 300px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-16%, -0%);
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -29,10 +42,10 @@ const ButtonDiv = styled.div`
     margintop: 1rem;
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 1000px) {
     width: 100%;
-    top: 0;
-    left: 0%;
+
+    transform: translate(-50%, -0%);
 
     p {
       margin-top: 0.2rem;
@@ -56,24 +69,34 @@ function TextBigImageButton({
   bottomBtnText,
   ballImage,
 }) {
-  const [top, setTop] = useState(0);
+  const [top, setTop] = useState(-169);
   const [right, setRight] = useState(0);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(min-width: 480px)");
+    const mediaQuery = window.matchMedia("(min-width: 1000px)");
+    const mediaQuery2 = window.matchMedia("(min-width: 905px)");
+    const mediaQuerycellphone = window.matchMedia("(min-width: 769px)");
+    const mediaQueryScellphone = window.matchMedia("(min-width: 480px)");
 
     const updatePositions = () => {
-      if (!mediaQuery.matches) {
+      if (!mediaQueryScellphone.matches) {
         setTop(-270);
-        setRight(-125);
+      } else if (!mediaQuerycellphone.matches) {
+        setTop(-245);
+      } else if (!mediaQuery2.matches) {
+        setTop(-520);
+      } else if (!mediaQuery.matches) {
+        setTop(-470);
       } else {
-        setTop(0);
-        setRight(0);
+        setTop(-169);
       }
     };
 
     updatePositions();
 
+    mediaQueryScellphone.addEventListener("change", updatePositions);
+    mediaQuerycellphone.addEventListener("change", updatePositions);
+    mediaQuery2.addEventListener("change", updatePositions);
     mediaQuery.addEventListener("change", updatePositions);
 
     return () => mediaQuery.removeEventListener("change", updatePositions);

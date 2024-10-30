@@ -22,6 +22,7 @@ const FooterContainer = styled.footer`
 
   .first-div {
     justify-content: center;
+    margin-right: 2rem;
   }
 
   .middle-div {
@@ -33,10 +34,14 @@ const FooterContainer = styled.footer`
     gap: 20px;
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 768px) {
     height: auto;
     grid-template-columns: 1fr;
     gap: 25px;
+
+    .first-div {
+      margin-right: 0rem;
+    }
 
     .middle-div {
       justify-content: center;

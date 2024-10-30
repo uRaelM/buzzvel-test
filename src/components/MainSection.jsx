@@ -5,6 +5,7 @@ import Testemony from "./Testimony";
 import Balls from "./design/Balls";
 
 const Home = styled.main`
+  margin-inline: auto;
   padding: 4rem;
   width: calc(100% - 8rem);
   height: calc(700px - 8rem);
@@ -12,7 +13,7 @@ const Home = styled.main`
   grid-template-columns: 1fr 1fr;
   color: ${(props) => props.textColor || "#0f172a"};
 
-  @media (max-width: 480px) {
+  @media (max-width: 768px) {
     padding: 1rem;
     width: calc(100% - 1rem);
     height: auto;
@@ -26,7 +27,7 @@ const LeftSection = styled.div`
   align-items: center;
   flex-direction: column;
   margin: 2rem 0 auto 0;
-  width: 100%;
+  width: (100% - 8rem);
   max-width: 550px;
   height: 90%;
 
@@ -44,7 +45,10 @@ const LeftSection = styled.div`
     line-height: 2rem;
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 768px) {
+    width: (100% - 2rem)
+    margin-inline: auto;
+    padding: 1rem 6rem;
     text-align: center;
     gap: 10px;
 
@@ -61,11 +65,23 @@ const LeftSection = styled.div`
       line-height: 2rem;
     }
   }
+
+  @media (max-width: 650px) {
+    padding: 1rem 4rem;
+  }
+
+  @media (max-width: 550px) {
+    padding: 1rem 2rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem 1rem;
+  }
 `;
 
 const RightSection = styled.div`
   height: 250px;
-  @media (max-width: 480px) {
+  @media (max-width: 768px) {
     grid-row: 1;
   }
 `;

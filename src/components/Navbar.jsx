@@ -10,6 +10,10 @@ const NavbarWrapper = styled.nav`
   padding: 1rem 4rem;
   background-color: ${(props) => props.backgroundColor || "transparent"};
   color: ${(props) => props.textColor || "#0f172a"};
+
+  @media (max-width: 1250px) {
+    padding: 1rem 2rem;
+  }
 `;
 
 const LeftNavbar = styled.div`
@@ -18,6 +22,10 @@ const LeftNavbar = styled.div`
   align-items: center;
   gap: 2rem;
   z-index: 2;
+
+  @media (max-width: 1250px) {
+    gap: 1rem;
+  }
 
   @media (max-width: 480px) {
     justify-content: flex-start;
@@ -28,6 +36,10 @@ const Logo = styled.img`
   width: ${(props) => props.logoWidth || "100%"};
   height: ${(props) => props.logoHeight || "50px"};
   margin-right: 2rem;
+
+  @media (max-width: 1250px) {
+    margin-right: 1rem;
+  }
 
   @media (max-width: 480px) {
     margin-right: 0rem;
@@ -58,7 +70,19 @@ const RightNavbar = styled(LeftNavbar)`
     width: 25px;
   }
 
-  @media (max-width: 480px) {
+  .number {
+    display: flex;
+    alignitems: center;
+    gap: 2rem;
+  }
+
+  @media (max-width: 975px) {
+    .number {
+      display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
     display: none;
   }
 `;
@@ -94,8 +118,10 @@ function Navbar({
           ))}
         </LeftNavbar>
         <RightNavbar>
-          <img src="assets/icons/phone.png" />
-          <span numberTextColor={numberTextColor}>555 818 282</span>
+          <div className="number">
+            <img src="assets/icons/phone.png" />
+            <span numberTextColor={numberTextColor}>555 818 282</span>
+          </div>
           <CallBtn
             callBtnColor={callBtnColor}
             callBtnHoverColor={callBtnHoverColor}

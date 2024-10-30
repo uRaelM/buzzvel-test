@@ -19,7 +19,21 @@ const GridContainer = styled.section`
     color: ${(props) => props.subTitleColor || "#D97706"};
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 1440px) {
+    height: calc(900px - 8rem);
+  }
+
+  @media (max-width: 1250px) {
+    height: calc(800px - 8rem);
+  }
+
+  @media (max-width: 850px) {
+    height: calc(900px - 8rem);
+    padding: 4rem 2rem;
+    grid-template-columns: ${(props) => (props.invert ? "4fr 3fr" : "3fr 4fr")};
+  }
+
+  @media (max-width: 768px) {
     text-align: center;
     padding: 1rem;
     width: calc(100% - 2rem);
@@ -29,8 +43,8 @@ const GridContainer = styled.section`
 `;
 
 const ImageGrid = styled.div`
-  @media (max-width: 480px) {
-    height: 350px;
+  @media (max-width: 768px) {
+    height: 400px;
   }
 `;
 
@@ -43,7 +57,15 @@ const TextGrid = styled.div`
   grid-template-rows: auto auto auto;
   gap: 20px;
 
-  @media (max-width: 480px) {
+  @media (max-width: 1440px) {
+    height: 70%;
+  }
+
+  @media (max-width: 1250px) {
+    height: 100%;
+  }
+
+  @media (max-width: 768px) {
     height: auto;
     grid-row: 1;
   }
@@ -51,7 +73,7 @@ const TextGrid = styled.div`
 
 const TitleSubTitle = styled.div`
   grid-column: span 2;
-  @media (max-width: 480px) {
+  @media (max-width: 768px) {
     margin-bottom: 4rem;
   }
 `;
@@ -92,24 +114,43 @@ function ImageWithGrid({
   const [offsetScreen, setOffsetScreen] = useState("65");
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(min-width: 480px)");
-    const mediaQueryBigNotebook = window.matchMedia("(min-width: 1440px)");
+    const mediaQueryCellphone = window.matchMedia("(min-width: 480px)");
+    const mediaQueryTablet = window.matchMedia("(min-width: 769px)");
+    const mediaQueryMtablet = window.matchMedia("(min-width: 850px)");
+    const mediaQueryBigNotebook = window.matchMedia("(min-width: 1441px)");
+    const mediaQueryLNotebook = window.matchMedia("(min-width: 1251px)");
 
     const updatePositions = () => {
-      if (!mediaQuery.matches) {
+      if (!mediaQueryCellphone.matches) {
         setTop1(0);
         setLeft1(-25);
         setTop2(-10);
-        setRight2(-190);
+        setRight2(-180);
+        setOffset("2");
+        setOffsetScreen("110");
+      } else if (!mediaQueryTablet.matches) {
+        setTop1(0);
+        setLeft1(-25);
+        setTop2(-10);
+        setRight2(-220);
         setOffset("2");
         setOffsetScreen("130");
-      } else if (!mediaQueryBigNotebook) {
+      } else if (!mediaQueryMtablet.matches) {
+        setLeft1(-50);
+        setRight2(-325);
+      } else if (!mediaQueryLNotebook.matches) {
+        setOffset("2");
+        setOffsetScreen("140");
+        setRight2(-300);
+      } else if (!mediaQueryBigNotebook.matches) {
+        setOffset("2");
+        setOffsetScreen("140");
         setRight2(-400);
       } else {
         setTop1(10);
         setLeft1(-75);
         setTop2(0);
-        setRight2(-500);
+        setRight2(-450);
         setOffset("1.2");
         setOffsetScreen("65");
       }
@@ -117,9 +158,14 @@ function ImageWithGrid({
 
     updatePositions();
 
-    mediaQuery.addEventListener("change", updatePositions);
+    mediaQueryCellphone.addEventListener("change", updatePositions);
+    mediaQueryMtablet.addEventListener("change", updatePositions);
+    mediaQueryLNotebook.addEventListener("change", updatePositions);
+    mediaQueryBigNotebook.addEventListener("change", updatePositions);
+    mediaQueryTablet.addEventListener("change", updatePositions);
 
-    return () => mediaQuery.removeEventListener("change", updatePositions);
+    return () =>
+      mediaQueryTablet.removeEventListener("change", updatePositions);
   }, []);
 
   const element = useRef(null);
@@ -142,8 +188,8 @@ function ImageWithGrid({
             top={top1}
             left={left1}
             ballImage={ballImage}
-            width="1000"
-            height="1000"
+            width="900"
+            height="900"
             innerImageTop={"52.1"}
             innerImage={ballInnerImage}
             innerImageLeft={"30"}
@@ -179,8 +225,8 @@ function ImageWithGrid({
             top={top2}
             right={right2}
             ballImage={ballImage}
-            width="1000"
-            height="1000"
+            width="900"
+            height="900"
             innerImageTop={"52.1"}
             innerImage={ballInnerImage}
             innerImageLeft={"30"}

@@ -24,8 +24,8 @@ const BallContainer = styled.div`
   background-size: contain;
 
   @media (max-width: 1440px) {
-    width: ${({ width }) => (width ? width * 0.75 : "650")}px;
-    height: ${({ height }) => (height ? height * 0.75 : "700")}px;
+    width: ${({ width }) => (width ? width * 0.8 : "520")}px;
+    height: ${({ height }) => (height ? height * 0.8 : "560")}px;
   }
 
   @media (max-width: 1250px) {
@@ -114,7 +114,7 @@ const Balls = ({
           variants={bounceVariants}
           initial="offscreen"
           whileInView="onscreen"
-          viewport={{ once: false, amount: 0.15 }}
+          viewport={{ once: false, amount: 0.05 }}
         >
           {innerImage && (
             <InnerImage

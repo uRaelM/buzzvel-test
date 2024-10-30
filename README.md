@@ -18,7 +18,7 @@ Componentes como o Balls, CallBtn e TextBigImage foram desenvolvidos para podere
 
 ## Responsividade
 
-A aplicação contém responsividade para Large Desktops (1440px>) e para Smarthphones (480px<) (A responsividade pode não responder adequadamente ao inspecionar elemento, atualize as variaveis após mudar de dimensões)
+A aplicação contém responsividade para todos os dispositivos (A responsividade pode não responder adequadamente ao inspecionar elemento nativo do seu navegador, atualize as variaveis após mudar de dimensões)
 
 ## Funcionalidades Técnicas
 
@@ -35,6 +35,7 @@ Flexibilidade Visual e Temática: O uso de componentes como Balls, que são elem
 - **Styled Components**: Para estilização de componentes React.
 - **React Helmet**: Para gerenciamento de meta tags no cabeçalho.
 - **Former Motion**: Para scroll capture e animações.
+- **Swiper**: Para o slider.
 
 ## Instalação
 
@@ -51,7 +52,7 @@ Certifique-se de que você tem as seguintes ferramentas instaladas:
 
    ```bash
    git clone https://github.com/uRaelM/buzzvel-test
-   cd buzzvel-test
+   cd Soller
 
    ```
 
